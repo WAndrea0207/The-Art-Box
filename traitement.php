@@ -10,10 +10,10 @@ if(empty($_POST['titre'])
     header('Location: ajouter.php?erreur=true');
     exit;
 } else {
-    $titre = htmlspecialchars($_POST['titre']);
-    $description = htmlspecialchars($_POST['description']);
-    $artiste = htmlspecialchars($_POST['artiste']);
-    $image = htmlspecialchars($_POST['image']);
+    $titre = $_POST['titre'];
+    $description = $_POST['description'];
+    $artiste = $_POST['artiste'];
+    $image = $_POST['image'];
 
     // Puis on insère notre oeuvre en base de données
     require 'bdd.php';
