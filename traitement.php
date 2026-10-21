@@ -16,4 +16,12 @@ if(empty($_POST['titre'])
     $image = htmlspecialchars($_POST['image']);
 
     // Puis on insère notre oeuvre en base de données
+    require 'bdd.php';
+    $db = connexion();
+    $req = $db->prepare('INSERT INTO oeuvres (titre, description, artiste, image) VALUES (?, ?, ?, ?)');
+    $req->execute([$titre, $description, $artiste, $image]);
+
+    // On affiche la nouvelle oeuvre
+    header('Location: oeuvre.php?id=' . $db->lastInsertId());
+    exit;
 }
